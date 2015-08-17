@@ -1,0 +1,39 @@
+<ion-view view-title="Home">
+  <ion-content class="padding">
+    <div ng-if="lastNotification" class="card">
+      <div class="item item-divider">Last push</div>
+        <div class="item item-body">
+          {{lastNotification}}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-divider">Push</div>
+      <div class="item item-body">
+        First, you must call <code>$ionicUser.identify()</code> with
+        user-identifiable data from your application. At the very least,
+        you <b>must</b> supply a <code>user_id</code> field. To auto generate
+        one, use <code>user_id: $ionicUser.generateGUID()</code>. This call
+        will send the identified user and registered tokens to your web hook or
+        to the ionic.io service.
+        <br>
+        <button class="button button-block button-positive" ng-click="identifyUser()">
+          Identify
+        </button>
+        <p ng-if="identified">
+        </p>
+        After you've identified, you can register for push notifications by calling
+        <code>$ionicPush.register</code>. Note: you should register each time
+        the app is launched (identified user data will be cached after the first identify() call).
+        <br>
+        <button class="button button-block button-positive" ng-click="pushRegister()">
+          Register for Push
+        </button>
+        <p ng-if="token">
+        Device token:<br>
+        <b><code>{{token}}</code></b>
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
